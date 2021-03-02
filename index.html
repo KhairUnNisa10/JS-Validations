@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RegEx</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<style>
+		body, h1, h2{
+			margin: 0;
+		}
+
+		.container{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background-image: linear-gradient(to right, #012C50, #4597DC);
+			color: #ffffff;
+			font-family: 'Montserrat', sans-serif;
+			text-shadow: 2px 2px #012C50;
+		}
+
+		h2{
+			margin: 10px 0 40px;
+		}
+
+		input{
+			border: none;
+			outline: none;
+		}
+
+		input[type=text]{
+			font-size: 20px;
+			font-family: 'Montserrat', sans-serif;
+			padding: 5px;
+		}
+
+		input[type=submit]{
+			background-color: #ffffff;
+			color: #012C50;
+			border: 1px solid #012C50;
+			padding: 8px 105px;
+			font-size: 18px;
+			margin-top: 20px;
+			transition: 0.5s;
+		}
+
+		input[type=submit]:hover{
+			background-image: linear-gradient(to right, #012C50, #4597DC);
+			color: #ffffff;
+			border: 1px solid #ffffff;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Phone Number Validation</h1>
+		<h2>Using Format: 000 000 0000</h2>
+		<form name="form" action="#"> 
+			<input type='text' name='phone'/>
+			<br>
+			<input type="submit" name="submit" value="Submit" onclick="phonenumber(document.form.phone)"/>
+		</form>
+	</div>
+
+	<script>
+		function phonenumber(inputtxt)
+		{
+			var phoneno = /^\(?([0-9]{3})\)?[ ]?([0-9]{3})[ ]?([0-9]{4})$/;
+			if(inputtxt.value.match(phoneno))
+			{
+				alert("Successfully Submitted");
+				return true;      
+			}
+			else
+			{
+				alert("Error! \nUse the Format: 000 000 0000");
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>
