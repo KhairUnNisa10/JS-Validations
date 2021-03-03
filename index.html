@@ -35,7 +35,7 @@
 			font-size: 20px;
 			font-family: 'Montserrat', sans-serif;
 			padding: 5px;
-			text-align: center;
+			white-space: pre;
 		}
 
 		input[type=submit]{
@@ -60,7 +60,7 @@
 		<h1>Phone Number Validation</h1>
 		<h2>Using Format: 000 000 0000</h2>
 		<form name="form" action="#"> 
-			<input type='text' name='phone'/>
+			<input type='text' name='phone' id="num" onkeydown="separator()" maxlength="12"/>
 			<br>
 			<input type="submit" name="submit" value="Submit" onclick="phonenumber(document.form.phone)"/>
 		</form>
@@ -69,7 +69,7 @@
 	<script>
 		function phonenumber(inputtxt)
 		{
-			var phoneno = /^\(?([0-9]{3})\)?[ ]?([0-9]{3})[ ]?([0-9]{4})$/;
+			var phoneno = /^\(?([0-9]{3})\)?[ ]([0-9]{3})[ ]([0-9]{4})$/;
 			if(inputtxt.value.match(phoneno))
 			{
 				alert("Successfully Submitted");
@@ -81,6 +81,25 @@
 				return false;
 			}
 		}
+
+		function separator(){
+			let phone = document.getElementById('num').value
+			console.log('your value is ',phone)
+			console.log('length : ',phone.length)
+
+			if(phone.length === 3){
+				document.getElementById('num').value+=' ';
+			}
+			else if(phone.length === 7){
+				document.getElementById('num').value+=' ';
+			}
+			else if(phone.length >=12){
+				alert('length of phone number exceded ')
+			}
+
+		}
+
+
 	</script>
 </body>
 </html>
